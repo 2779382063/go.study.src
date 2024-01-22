@@ -1,0 +1,10 @@
+一、golang中如何实现RPC
+1、golang中实现RPC非常简单，官方提供了封装好的库，还有一些第三方的库
+2、golang官方的net/rpc库使用encoding/gob进行编解码，支持tcp和http数据传输方式，由于其他语言不支持gob编解码方式，所以golang的RPC只支持golang开发的服务器与客户端之间的交互
+3、官方还提供了net/rpc/jsonrpc库实现RPC方法，jsonrpc采用JSON进行数据编解码，因而支持跨语言调用，目前jsonrpc库是基于tcp协议实现的，暂不支持http传输方式
+
+二、golang写RPC程序，必须符合4个基本条件，不然RPC用不了
+1、结构体字段首字母要大写，可以别人调用
+2、函数名必须首字母大写
+3、函数第一参数是接收参数，第二个参数是返回给客户端的参数，必须是指针类型
+4、函数还必须有一个返回值error
